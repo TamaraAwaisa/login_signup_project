@@ -1,0 +1,11 @@
+{
+  "email": "Email",
+  "password": "Password",
+  "login": "Login",
+  "signup": "Signup",
+  "name": "Name",
+  "rememberMe": "Remember Me",
+  "invalidEmailOrPassword": "Invalid Email or Password",
+  "ok": "Ok",
+  "error": "Error"
+}

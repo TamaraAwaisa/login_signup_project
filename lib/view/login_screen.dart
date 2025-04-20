@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:login_notes_project/view/signup_screen.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../controller/db_controller.dart';
 import '../utils/const_value.dart';
 import '../utils/shared_preferences_helper.dart';
@@ -27,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.initState();
     getData();
   }
-  getData(){
+  getData() async {
     SharedPreferencesHelper().getPrefBool(
         key: ConstValue.rememberMe,
         defaultValue: false
@@ -64,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   controller: emailController,
                   decoration: InputDecoration(
                       prefixIcon: Icon(Icons.email),
-                      label: Text("Email"),
+                      label: Text(AppLocalizations.of(context)!.email),
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(16))
                   ),
                 ),
@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         showPassword=!showPassword;
                         setState(() {});
                       }, icon: Icon(showPassword?Icons.visibility:Icons.visibility_off),),
-                      label: Text("Password"),
+                      label: Text(AppLocalizations.of(context)!.password),
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(16))
                   ),
                 ),
@@ -88,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Checkbox(value: rememberMe,
                       onChanged: (value){rememberMe=value!;setState(() {});},
                     ),
-                    Text("Remember Me"),
+                    Text(AppLocalizations.of(context)!.rememberMe),
                   ],
                 ),
                 SizedBox(height: 20,),
@@ -121,21 +121,21 @@ class _LoginScreenState extends State<LoginScreen> {
                     showDialog(context: context,
                         builder: (context){
                           return AlertDialog(
-                            title: Text("Error"),
-                            content: Text("Invalid Email or Password"),
+                            title: Text(AppLocalizations.of(context)!.error),
+                            content: Text(AppLocalizations.of(context)!.invalidEmailOrPassword),
                             actions: [
                             TextButton(onPressed: (){
                               Navigator.pop(context);
-                            }, child: Text("Ok"))
+                            }, child: Text(AppLocalizations.of(context)!.ok))
                           ],);
                         });
                   }
                 }
-                    ,child: Text("LogIn")),
+                    ,child: Text(AppLocalizations.of(context)!.login)),
                 SizedBox(height: 20,),
                 ElevatedButton(onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>SignupScreen()));
-                }, child: Text("SignUp")),
+                }, child: Text(AppLocalizations.of(context)!.signup)),
               ],
             ),
           )

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../controller/db_controller.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -30,7 +30,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 controller: nameController,
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.person_rounded),
-                    label: Text("UserName"),
+                    label: Text(AppLocalizations.of(context)!.name),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(16))
                 ),
               ),
@@ -39,7 +39,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 controller: emailController,
                 decoration: InputDecoration(
                     prefixIcon: Icon(Icons.email),
-                    label: Text("Email"),
+                    label: Text(AppLocalizations.of(context)!.email),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(16))
                 ),
               ),
@@ -53,7 +53,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       showPassword=!showPassword;
                       setState(() {});
                     }, icon: Icon(showPassword?Icons.visibility:Icons.visibility_off),),
-                    label: Text("Password"),
+                    label: Text(AppLocalizations.of(context)!.password),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(16))
                 ),
               ),
@@ -62,11 +62,11 @@ class _SignupScreenState extends State<SignupScreen> {
                 DbController dbController=DbController();
                 await dbController.signUp(name: nameController.text, email: emailController.text, password: passwordController.text);
                 Navigator.pop(context);
-              }, child: Text("SignUp")),
+              }, child: Text(AppLocalizations.of(context)!.signup)),
               SizedBox(height: 20,),
               ElevatedButton(onPressed: (){
                 Navigator.pop(context);
-              }, child: Text("LogIn")),
+              }, child: Text(AppLocalizations.of(context)!.login)),
             ],
           ),
         ),
